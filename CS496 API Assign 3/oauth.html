@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {padding-top: 50px;}
+    </style>
+    <title>Bootstrap Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <body>
+  <div class="jumbotron">
+    <div class="container">
+      <h1>CS496 OAuth 2.0 Implementation Results</h1>
+      <p class="lead centered-text">
+          Your Google+ Account information is below.
+      </p>
+      <ul>
+          <li><strong>First Name</strong>: {{ firstName }}</li>
+          <li><strong>Last Name</strong>: {{ lastName }}</li>
+          <li><strong>Google+ Link</strong>: <a href="{{ plusLink }}">{{ plusName }}</a></li>
+          <li><strong>State</strong>: {{ state }}</li>
+      </ul>
+    </div>
+  </div>
+  </body>
+</html>

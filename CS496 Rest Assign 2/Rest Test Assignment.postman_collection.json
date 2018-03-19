@@ -1,0 +1,1342 @@
+{
+	"info": {
+		"name": "Rest Test Assignment",
+		"_postman_id": "beba5c1d-65d6-f4d2-30be-434739619fab",
+		"description": "Hosted on \nhttps://rest-project-194300.appspot.com/\n\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Boats",
+			"description": "",
+			"item": [
+				{
+					"name": "Create Boat 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "56f094bd-d285-4857-b85a-e4afa58d837f",
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody); ",
+									"",
+									"postman.setGlobalVariable(\"bLink1\", data['self']); ",
+									"postman.setGlobalVariable(\"bID1\", data['boatID']); ",
+									"",
+									"tests['Boat length'] = responseBody.has(1); ",
+									"tests['Boat name'] = responseBody.has(\"Boat 1\");",
+									"tests['Boat type'] = responseBody.has(\"Test Type 1\");",
+									"",
+									"tests[\"Successfully Created Boat. Status 201\"] = responseCode.code === 201; "
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n \"name\": \"Boat 1\", \n \"type\": \"Test Type 1\", \n \"length\": 1\n}"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/boats",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"boats"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Boat 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2e80cda7-ca16-4fd0-aca8-c6e8b5d40998",
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody); ",
+									"",
+									"postman.setGlobalVariable(\"bLink2\", data['self']); ",
+									"postman.setGlobalVariable(\"bID2\", data['boatID']); ",
+									"",
+									"tests['Boat length'] = responseBody.has(2); ",
+									"tests['Boat name'] = responseBody.has(\"Boat 2\");",
+									"tests['Boat type'] = responseBody.has(\"Test Type 2\");",
+									"",
+									"tests[\"Successfully Created Boat. Status 201\"] = responseCode.code === 201; "
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n \"name\": \"Boat 2\", \n \"type\": \"Test Type 2\", \n \"length\": 2\n }"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/boats",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"boats"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Boat 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb992c53-df6b-41db-a05c-373d5c4dd495",
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody); ",
+									"",
+									"postman.setGlobalVariable(\"bLink3\", data['self']); ",
+									"postman.setGlobalVariable(\"bID3\", data['boatID']); ",
+									"",
+									"tests['Boat length'] = responseBody.has(3); ",
+									"tests['Boat name'] = responseBody.has(\"Boat 3\");",
+									"tests['Boat type'] = responseBody.has(\"Test Type 3\");",
+									"",
+									"tests[\"Successfully Created Boat. Status 201\"] = responseCode.code === 201; "
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\n \"name\": \"Boat 3\", \n \"type\": \"Test Type 3\", \n \"length\": 3\n }"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/boats",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"boats"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create Slips",
+			"description": "",
+			"item": [
+				{
+					"name": "Create Slip 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dadba64f-bc12-4549-a668-d973a5046097",
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody); ",
+									"",
+									"postman.setGlobalVariable(\"sLink1\", data['self']); ",
+									"postman.setGlobalVariable(\"sID1\", data['slipID']); ",
+									"tests['Slip Number'] = responseBody.has(1); ",
+									"",
+									"tests[\"Successfully Created Boat. Status 201\"] = responseCode.code === 201; ",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"number\": 1\n}"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/slips",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"slips"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Slip 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d48ad6f3-5e3c-46a9-8b64-35a1aa728926",
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody); ",
+									"",
+									"postman.setGlobalVariable(\"sLink2\", data['self']); ",
+									"postman.setGlobalVariable(\"sID2\", data['slipID']); ",
+									"tests['Slip Number'] = responseBody.has(2); ",
+									"",
+									"tests[\"Successfully Created Boat. Status 201\"] = responseCode.code === 201; ",
+									"",
+									"",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"number\": 2\n}"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/slips",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"slips"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Create Slip 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6b60b23f-1079-4e31-baf9-faffa4798ee0",
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody); ",
+									"",
+									"postman.setGlobalVariable(\"sLink3\", data['self']); ",
+									"postman.setGlobalVariable(\"sID3\", data['slipID']); ",
+									"tests['Slip Number'] = responseBody.has(3); ",
+									"",
+									"tests[\"Successfully Created Boat. Status 201\"] = responseCode.code === 201; ",
+									"",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"number\": 3\n}"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/slips",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"slips"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Check if you can create an existing slip",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Unable to Create Slip. Slip Exists. Status 505\"] = responseCode.code === 505; ",
+									"tests[\"Silps Exists\"] = responseBody.has(\"Slip number already exists\");",
+									"",
+									"",
+									""
+								],
+								"id": "408d97d2-da1a-44c3-9e15-67e0d503fcd9",
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"number\": 3\n}"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/slips",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"slips"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Lists",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Boat List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fb70abc7-34fb-4f1a-ab58-014506c6eaa0",
+								"type": "text/javascript",
+								"exec": [
+									"function greaterThanOne(num){",
+									"    if (num > 1)",
+									"        return true; ",
+									"    return false; ",
+									"}",
+									"",
+									"var responseLength = JSON.parse(responseBody).length; ",
+									"",
+									"tests[\"GET request returned all boats\"] = greaterThanOne(responseLength);",
+									"tests[\"List of Boats Retrieved. Status 201\"] = responseCode.code === 201;",
+									"",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"slip_number\": 5}"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/boats",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"boats"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single Boat",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b0af753f-9a33-41f5-84c8-1ebf1af03774",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Boat ID is in response body\"] = responseBody.has(postman.getGlobalVariable(\"bID1\")); ",
+									"tests[\"Single Boat Retrieved. Status 201\"] = responseCode.code === 201",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"slip_number\": 5}"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/{{bLink1}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"{{bLink1}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Slip List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "93ac367b-18e5-4de8-8fa8-172327aaf54c",
+								"type": "text/javascript",
+								"exec": [
+									"function greaterThanOne(num){",
+									"    if (num > 1)",
+									"        return true; ",
+									"    return false; ",
+									"}",
+									"",
+									"var responseLength = JSON.parse(responseBody).length; ",
+									"",
+									"tests[\"GET request returned more than one slip\"] = greaterThanOne(responseLength);",
+									"tests[\"Retieved All Slips. Status 200\"] = responseCode.code === 200;",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"slip_number\": 5}"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/slips",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"slips"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Single Boat",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a45ed500-ceb5-47e4-b924-149c40a2d333",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Slip ID is in response body\"] = responseBody.has(postman.getGlobalVariable(\"sID1\")); ",
+									"tests[\"Successfully a Single Slip. Status 200\"] = responseCode.code === 200;",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"slip_number\": 5}"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/{{sLink1}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"{{sLink1}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patch A Boat",
+			"description": "",
+			"item": [
+				{
+					"name": "Patch Boat 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9bf254b6-7a99-456c-ab1e-ade419bd7d2a",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Boat Type Was Patched\"] = responseBody.has(\"Patch Boat\"); ",
+									"tests[\"Boat ID is Correctly Modified\"] = responseBody.has(postman.getGlobalVariable(\"bID1\")); ",
+									"tests[\"Successfully Retrieved Single Slip. Status 201\"] = responseCode.code === 201;",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"type\": \"Patch Boat\"\n}"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/{{bLink1}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"{{bLink1}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Boat 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "30be401d-c9ad-4fcc-8e43-f4ba519fff4e",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Boat Name Was Changed\"] = responseBody.has(\"Boat 4\");",
+									"tests[\"Boat Type Was Changed\"] = responseBody.has(\"Changed Boat\");",
+									"tests[\"Boat Length Was Changed\"] = responseBody.has(5);",
+									"",
+									"tests[\"Boat ID is Correctly Modified\"] = responseBody.has(postman.getGlobalVariable(\"bID1\")); ",
+									"tests[\"Successfully Retrieved Single Slip. Status 201\"] = responseCode.code === 201;",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\": \"Boat 4\", \n\"type\": \"Changed Boat\", \n\"length\": 5\n}"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/{{bLink1}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"{{bLink1}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patch A Slip",
+			"description": "",
+			"item": [
+				{
+					"name": "Patch Slip 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cfbdbeff-db17-4915-83ea-0f0bae593010",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Slip Number Updated\"] = responseBody.has(6); ",
+									"tests[\"Slip ID was Correctly Modified\"] = responseBody.has(postman.getGlobalVariable(\"sID1\")); ",
+									"tests[\"Successfully Retrieved Single Slip. Status 201\"] = responseCode.code === 201;",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"number\": 6\n}"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/{{sLink1}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"{{sLink1}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Slip 1 With Existing Slip Number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fe80c1ef-f3c0-4eae-a0a1-bfd3043e76f0",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Silps Exists Message\"] = responseBody.has(\"Slip number already exists\")",
+									"tests[\"Sucessfully Failure to Modify Existing Slip. Status 505\"] = responseCode.code === 505;",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"number\": 3\n}"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/{{sLink1}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"{{sLink1}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Put Boat Into Slips",
+			"description": "",
+			"item": [
+				{
+					"name": "Put Boat 1 to Slip 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7967320f-42d8-4a5f-9d42-8492f69afd61",
+								"type": "text/javascript",
+								"exec": [
+									"tests['The Arrival Date Was Updated'] = responseBody.has(\"01/01/2017\"); ",
+									"tests['Current Boat Shows Correct Boat ID'] = responseBody.has(postman.getGlobalVariable(\"bID1\")); ",
+									"tests[\"Successfully Created Boat. Status 201\"] = responseCode.code === 201; "
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"arrival_date\": \"01/01/2017\"\n} "
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com{{sLink1}}/dock/{{bID1}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com{{sLink1}}"
+							],
+							"path": [
+								"dock",
+								"{{bID1}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Put Boat 2 to Slip 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7914766e-6de1-4771-bcb8-af794bed918d",
+								"type": "text/javascript",
+								"exec": [
+									"tests['The Arrival Date Was Updated'] = responseBody.has(\"01/02/2017\"); ",
+									"tests['Current Boat Shows Correct Boat ID'] = responseBody.has(postman.getGlobalVariable(\"bID2\")); ",
+									"tests[\"Successfully Created Boat. Status 201\"] = responseCode.code === 201; "
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"arrival_date\": \"01/02/2017\"\n} "
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com{{sLink2}}/dock/{{bID2}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com{{sLink2}}"
+							],
+							"path": [
+								"dock",
+								"{{bID2}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Put Boat 3 to Slip 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a819a5da-9c69-414b-a0e9-f0d35f8bb7dc",
+								"type": "text/javascript",
+								"exec": [
+									"tests['The Arrival Date Was Updated'] = responseBody.has(\"01/03/2017\"); ",
+									"tests['Current Boat Shows Correct Boat ID'] = responseBody.has(postman.getGlobalVariable(\"bID3\")); ",
+									"tests[\"Successfully Created Boat. Status 201\"] = responseCode.code === 201; "
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"arrival_date\": \"01/03/2017\"\n} "
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com{{sLink3}}/dock/{{bID3}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com{{sLink3}}"
+							],
+							"path": [
+								"dock",
+								"{{bID3}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Put Boat To Sea",
+			"description": "",
+			"item": [
+				{
+					"name": "Put Boat 1 to Sea",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0b64ca7e-ad2a-4b5f-897b-222df283c0e5",
+								"type": "text/javascript",
+								"exec": [
+									"tests['Departure List Updated'] = responseBody.has(\"01/04/2017\"); ",
+									"tests['Current Boat Shows Correct Boat ID'] = responseBody.has(postman.getGlobalVariable(\"bID1\")); ",
+									"tests[\"Successfully Created Boat. Status 201\"] = responseCode.code === 201; "
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"depature_date\": \"01/04/2017\"\n}"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/boats/{{bID1}}/atsea/{{sID1}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"boats",
+								"{{bID1}}",
+								"atsea",
+								"{{sID1}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Check Updated Departure List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b3527ded-04f8-4498-a250-72c847b075de",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Slip ID is in response body\"] = responseBody.has(postman.getGlobalVariable(\"sID1\")); ",
+									"tests[\"Successfully Retrieved Slip. Status 200\"] = responseCode.code === 200;",
+									"",
+									"var data = JSON.parse(responseBody); ",
+									"",
+									"tests['Slip Departure History Was Successfully Updated'] = data['depart_history'] !== null; ",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"slip_number\": 5}"
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/{{sLink1}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"{{sLink1}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete Slips and Boats",
+			"description": "",
+			"item": [
+				{
+					"name": " Delete Slip 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f017d8f1-1211-42cc-966e-67d1b6d11d90",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Successfully Deleted Slip. Status 201\"] = responseCode.code === 201;",
+									"tests[\"Silp Successfully Deleted\"] = responseBody.has(\"Slip Deleted\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/{{sLink1}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"{{sLink1}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Boat 1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7bb1b9d2-6175-408e-95ce-3e26aa6615dd",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Successfully Deleted Boat. Status 201)\"] = responseCode.code === 201;",
+									"tests[\"Boat Deleted\"] = responseBody.has(\"Boat Deleted\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/{{bLink1}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"{{bLink1}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get Boat 2 Sea Status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4c28a1c8-6930-42ff-a70e-b469291e772d",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Successfully Retrieved Boat. Status 201\"] = responseCode.code === 201;",
+									"postman.setGlobalVariable(\"atSeaCheck\", data['at_sea']); "
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/{{bLink2}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"{{bLink2}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Slip 2 ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "5dc71ea5-15d3-4632-8d76-b4dc920a781e",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Successfully Deleted Slip. Status 201\"] = responseCode.code === 201;",
+									"tests[\"Silp Successfully Deleted\"] = responseBody.has(\"Slip Deleted\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/{{sLink2}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"{{sLink2}}"
+							]
+						},
+						"description": "Delete the slip even though it's currently occupied "
+					},
+					"response": []
+				},
+				{
+					"name": "Get Boat 2 Sea Status",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0f24c5e5-da4d-4369-9cf7-da3f2bd0eeaf",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Successfully Retrieved Boat. Status 201\"] = responseCode.code === 201;",
+									"var data = JSON.parse(responseBody); ",
+									"tests[\"Boat 2 now At Sea\"] = postman.getGlobalVariable(\"atSeaCheck\") !== data['at_sea']; "
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/{{bLink2}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"{{bLink2}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Boat 2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Successfully Deleted Boat. Status 201\"] = responseCode.code === 201;",
+									"tests[\"Boat successfully Deleted\"] = responseBody.has(\"Boat Deleted\");"
+								],
+								"id": "3cba2f7e-7c15-4595-929e-b3542c784703",
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/{{bLink2}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"{{bLink2}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Slip 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b09f980c-6117-4111-bcec-2d6f220579b8",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Successfully Deleted Slip. Status 201\"] = responseCode.code === 201;",
+									"tests[\"Silps successfully Deleted\"] = responseBody.has(\"Slip Deleted\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/{{sLink3}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"{{sLink3}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Boat 3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f323e29e-408a-4b2d-8c96-456c678f8774",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Successfully Deleted Boat. Status 201\"] = responseCode.code === 201;",
+									"tests[\"Boat successfully Deleted\"] = responseBody.has(\"Boat Deleted\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/{{bLink3}}",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"{{bLink3}}"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Check if Datastore Empty",
+			"description": "",
+			"item": [
+				{
+					"name": "Check if Boats Empty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "40aad320-e2b3-472c-af2c-bc524fd71a11",
+								"type": "text/javascript",
+								"exec": [
+									"function greaterThanOne(num){",
+									"    if (num > 1)",
+									"        return false; ",
+									"    return true; ",
+									"}",
+									"",
+									"var responseLength = JSON.parse(responseBody).length; ",
+									"",
+									"tests[\"GET request returned no boats\"] = greaterThanOne(responseLength);",
+									"tests[\"Successfully Retrieved List of Boats Retrieved. Status 201\"] = responseCode.code === 201;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/boats",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"boats"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Check if Slips Empty",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dcb5c479-f2ac-4a21-8e6c-ce35253f8d9a",
+								"type": "text/javascript",
+								"exec": [
+									"function greaterThanOne(num){",
+									"    if (num > 1)",
+									"        return false; ",
+									"    return true; ",
+									"}",
+									"",
+									"var responseLength = JSON.parse(responseBody).length; ",
+									"",
+									"tests[\"GET request returned no boats\"] = greaterThanOne(responseLength);",
+									"tests[\"List of Boats Retrieved. Status 201\"] = responseCode.code === 201;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://rest-project-194300.appspot.com/boats",
+							"protocol": "https",
+							"host": [
+								"rest-project-194300",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"boats"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"exec": [
+					""
+				],
+				"id": "29ee5b52-59a4-4a2c-8b7e-4e3c87e12b04",
+				"type": "text/javascript"
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"exec": [
+					""
+				],
+				"id": "a4feaa64-8322-4c7e-b0a0-d54c4900233b",
+				"type": "text/javascript"
+			}
+		}
+	]
+}

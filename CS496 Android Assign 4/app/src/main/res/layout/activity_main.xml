@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Linear View"
+        android:id="@+id/Layout1"
+        android:layout_margin="5dp"
+        android:textSize="45sp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#ffffffff"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Vertical View"
+        android:id="@+id/Layout2"
+        android:layout_margin="5dp"
+        android:textSize="45sp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#ffffffff"/>/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Grid View"
+        android:id="@+id/Layout3"
+        android:layout_margin="5dp"
+        android:textSize="45sp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#ffffffff" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Relative View"
+        android:id="@+id/Layout4"
+        android:layout_margin="5dp"
+        android:textSize="45sp"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="#ffffffff" />
+</LinearLayout>

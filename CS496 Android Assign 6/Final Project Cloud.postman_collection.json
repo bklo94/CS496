@@ -1,0 +1,1827 @@
+{
+	"info": {
+		"name": "Final Project Cloud",
+		"_postman_id": "4a72aede-579d-8558-91c0-d451783ab9dd",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get User and Movie Info",
+			"description": "",
+			"item": [
+				{
+					"name": "Get User Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "df62dd86-87ab-4b54-87e6-e752feabfdda",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"User info was in the response\"] = responseBody.has(\"fname\") && responseBody.has(\"lname\") && responseBody.has(\"email\");",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie Info From User Response",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cee7d2af-4f83-4b1a-8859-1b21f218ad6d",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"Movie info was in the response\"] = responseBody.has(\"title\") && responseBody.has(\"description\") && responseBody.has(\"release_date\") && responseBody.has(\"rt_score\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie Info ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d946373c-fa24-44b9-92a1-034f48697087",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"Movie Info was in the response\"] = responseBody.has(\"title\") && responseBody.has(\"description\") && responseBody.has(\"release_date\") && responseBody.has(\"rt_score\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo/ag5zfm9hdXRoLTE5NDYwN3ISCxIFbW92aWUYgICAgN7qiQoM",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo",
+								"ag5zfm9hdXRoLTE5NDYwN3ISCxIFbW92aWUYgICAgN7qiQoM"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "fc7d02f5-c6c9-4ebc-8fc2-6432944b89e4",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "b83c1539-b70d-424e-bd70-05c7e7a323d0",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Get User and Movie Errors",
+			"description": "",
+			"item": [
+				{
+					"name": "Get User Does Not Exist Error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9957e975-360b-454f-898a-68134ed2dd2a",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"User does not exist\"] = responseBody.has(\"ERROR: User does not exist\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/10213808035868067937",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"10213808035868067937"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie Data from Nonexistent User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7e46519b-89e6-40ab-b2c6-8555ab740094",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"User does not exist\"] = responseBody.has(\"ERROR: User does not exist\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/10213808035868067937/movieInfo/ag5zfm9hdXRoLTE5NDYwN3ISCxIFbW92aWUYgICAgO2xgwkM",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"10213808035868067937",
+								"movieInfo",
+								"ag5zfm9hdXRoLTE5NDYwN3ISCxIFbW92aWUYgICAgO2xgwkM"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Movie Does Not Exist Error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "63f69fb0-fa49-47c3-9f53-dd1a3a7daa51",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"Movie data does not exist\"] = responseBody.has(\"ERROR: Movie data does not exist\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo/ag5zfm9hdXRoLTE5NDYwN3ISCxIFbW92aWUYgICAgN6QgQo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo",
+								"ag5zfm9hdXRoLTE5NDYwN3ISCxIFbW92aWUYgICAgN6QgQo"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9dc21e55-f61c-4d6a-8b53-66dbdd7069b8",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "32bbe634-a9c3-4282-8225-7c98c95fb03e",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Post Moive Info",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Movie List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "72bf09f4-dea8-4be9-9dbb-445f0790a2bb",
+								"type": "text/javascript",
+								"exec": [
+									"var gistsObject = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"numMovies\",responseBody);",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post New Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e5034560-e00d-47e2-a6a1-af4006951301",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"New movie was added\"] = responseBody.has(\"title\") && responseBody.has(\"description\") && responseBody.has(\"release_date\") && responseBody.has(\"rt_score\");",
+									"",
+									"var response = JSON.parse(responseBody);",
+									"",
+									"postman.clearGlobalVariable(\"matchID\", response.id);",
+									"postman.setGlobalVariable(\"matchID\", response.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"Castle in the Sky\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Movie if Posted",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6828d665-0423-4308-9f98-a37c2c809c6c",
+								"type": "text/javascript",
+								"exec": [
+									"var object = JSON.parse(responseBody);",
+									"",
+									"var checkCount = JSON.parse(postman.getEnvironmentVariable(\"numMovies\"));",
+									"",
+									"tests[\"The Movie count for user has increased by 1\"] = object.length === checkCount.length + 1;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Movie if Correct Movie Posted",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "26bba9ee-c7ff-41c1-b082-43959258b319",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"Movie has been correctly posted\"] = responseBody.has(\"Castle in the Sky\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post to Nonexistent User Error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7b3db9cc-1c89-493c-ac98-09c64669daf1",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"User does not exist\"] = responseBody.has(\"ERROR: User does not exist\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"Nonexistent Spirirt in the Sky\", \"description\": \"Test Descriptoin\", \"release_date\": \"2000\", \"rt_score\": \"101\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370123/movieInfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370123",
+								"movieInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post Nonexistent Attribute Error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b029b370-030d-4a2f-a1c1-98bfb28cc770",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									" ",
+									"tests[\"Attribute does not exist\"] = responseBody.has(\"ERROR: expected format -> {\\\"title\\\": \\\"str\\\"}\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"WRONG\": \"Grave of the Fireflies\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": " Post Nonexistent Movie Error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "86fa1db1-8dbf-4294-b956-b85f1a8e8fe7",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"Movie does not exist\"] = responseBody.has(\"ERROR: Movie data specified could not be found\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"Nonexistent Spirirt in the Sky\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Asset From Nonexistent User Error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "256c35f8-296f-4407-bff6-242483918e7d",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"User does not exist\"] = responseBody.has(\"ERROR: User does not exist\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370123/movieInfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370123",
+								"movieInfo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patch Movie Info",
+			"description": "",
+			"item": [
+				{
+					"name": "Patch Movie Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "299c77d0-3b13-40af-b17e-1131494c545c",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"Movie's 'rt_score' was updated\"] = responseBody.has(\"SUCCESS: Movie data 'rt_score' was updated\");",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"rt_score\": \"200\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo/{{matchID}}",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo",
+								"{{matchID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Movie if Correct Movie Patched",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "94067340-41d7-4162-a308-319ce02cee69",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"Movie has been correctly patched\"] = responseBody.has(\"\\\"rt_score\\\": \\\"200\\\"\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo/{{matchID}}",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo",
+								"{{matchID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Movie to Nonexistent User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "824170a3-711b-48ee-a078-f2859527307c",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"User does not exist\"] = responseBody.has(\"ERROR: User does not exist\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"rt_score\": \"5\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/10213808035868067937/movieInfo/{{matchID}}",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"10213808035868067937",
+								"movieInfo",
+								"{{matchID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Nonexistent Movie ID",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "92b06078-39ec-406c-914f-b1f21c325cb6",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"Movie does not exist\"] = responseBody.has(\"ERROR: Movie data does not exist\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"500\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo/ag5zfm9hdXRoLTE5NDYwN3ISCxIFbW92aWUYgICAgN6",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo",
+								"ag5zfm9hdXRoLTE5NDYwN3ISCxIFbW92aWUYgICAgN6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Wrong attributes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "ca364536-3f03-45ed-a0d1-0ea05ffe9e73",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"Movie attributes does not exist\"] = responseBody.has(\"ERROR: expected format -> {\\\"title\\\": \\\"str\\\", \\\"description\\\": \\\"str\\\", \\\"release_date\\\": \\\"str\\\", \\\"rt_score\\\": \\\"str\\\"}\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"not_rt_score\": \"5\", \"wrong_title\": \"BTC\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo/{{matchID}}",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo",
+								"{{matchID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Put Movie Info",
+			"description": "",
+			"item": [
+				{
+					"name": "Put Asset",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9a14790e-9cc8-4b96-9237-af3d3d98861e",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"Updated Movie in the response\"] = responseBody.has(\"title\") && responseBody.has(\"description\") && responseBody.has(\"release_date\") && responseBody.has(\"rt_score\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"Nonexistent Spirirt in the Sky\", \"description\": \"Test Descriptoin\", \"release_date\": \"2000\", \"rt_score\": \"101\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo/{{matchID}}",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo",
+								"{{matchID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Movie if Correct Movie Put",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "46fd1511-f4c8-4934-9376-7e26beac3c9d",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"Movie has been correctly put\"] = responseBody.has(\"Nonexistent Spirirt in the Sky\") && responseBody.has(\"Test Descriptoin\") && responseBody.has(\"2000\") && responseBody.has(\"101\");",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put to Nonexistent User Error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cebd6828-57f5-450e-8952-edd461cb9090",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"User does not exist\"] = responseBody.has(\"ERROR: User does not exist\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"Nonexistent Spirirt in the Sky\", \"description\": \"Test Descriptoin\", \"release_date\": \"2000\", \"rt_score\": \"101\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/10213808035868067937/movieInfo/{{matchID}}",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"10213808035868067937",
+								"movieInfo",
+								"{{matchID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": " Post to Nonexistent Movie Error",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "69b9322b-1b72-49d6-85fa-c8ee2e8de077",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"Movie does not exist\"] = responseBody.has(\"ERROR: Movie data does not exist\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"title\": \"Nonexistent Spirirt in the Sky\", \"description\": \"Test Descriptoin\", \"release_date\": \"2000\", \"rt_score\": \"101\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo/ag5zfm9hdXRoLTE5NDYwN3ISCxIFbW92aWUYgICAgN6QgQo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo",
+								"ag5zfm9hdXRoLTE5NDYwN3ISCxIFbW92aWUYgICAgN6QgQo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post to Nonexistent Attributes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4ab0d2eb-ad0e-4671-95ba-d7c6a987a18b",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"Movie attribute does not exist\"] = responseBody.has(\"ERROR: expected format -> {\\\"title\\\": \\\"str\\\", \\\"description\\\": \\\"str\\\", \\\"release_date\\\": \\\"str\\\", \\\"rt_score\\\": \\\"str\\\"}\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Title\": \"Nonexistent Spirirt in the Sky\", \"Description\": \"Test Descriptoin\", \"Release_date\": \"2000\", \"Rt_score\": \"101\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo/{{matchID}}",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo",
+								"{{matchID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete Movie Info",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Movie List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "6b8f2b5a-a7a8-48e5-beb6-e1a3fe0a7820",
+								"type": "text/javascript",
+								"exec": [
+									"var gistsObject = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"numMovies\",responseBody);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e6343f0a-111a-4e72-b5af-61cb560f4fac",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"Movie data was deleted\"] = responseBody.has(\"SUCCESS: Movie data was deleted\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo/{{matchID}}",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo",
+								"{{matchID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Movie Count Deleted",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3c34edc1-569f-47ee-83ea-9dea01394b71",
+								"type": "text/javascript",
+								"exec": [
+									"var object = JSON.parse(responseBody);",
+									"",
+									"var checkCount = JSON.parse(postman.getEnvironmentVariable(\"numMovies\"));",
+									"",
+									"tests[\"The Movie count for user has decreased by 1\"] = object.length === checkCount.length - 1;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Movie from Nonexistent User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4dbdfcd9-1dc9-4e60-bb78-1c46e8a690a8",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"User does not exist\"] = responseBody.has(\"ERROR: User does not exist\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/10213808035868067937/movieInfo/{{matchID}}",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"10213808035868067937",
+								"movieInfo",
+								"{{matchID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Nonexistent Movie",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "aa196579-b4a8-482d-b542-7b078ad98e27",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"Movie does not exist\"] = responseBody.has(\"ERROR: Movie data does not exist\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/movieInfo/ag5zfm9hdXRoLTE5NDYwN3ISCxIFbW92aWUYgICAgN6QgQo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"movieInfo",
+								"ag5zfm9hdXRoLTE5NDYwN3ISCxIFbW92aWUYgICAgN6QgQo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Account Info",
+			"description": "",
+			"item": [
+				{
+					"name": "Get Account Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2336425b-103d-4e4e-8a63-3f6651ae6c81",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\" User's Account Info was in the response\"] = responseBody.has(\"fname\") && responseBody.has(\"lname\") && responseBody.has(\"email\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/accountinfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"accountinfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Nonexistent Account Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f2072cc8-661d-45b0-bd30-a8be1aede9fb",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"User does not exist\"] = responseBody.has(\"ERROR: User does not exist\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/10213808035868067937/accountinfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"10213808035868067937",
+								"accountinfo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Put Account Info",
+			"description": "",
+			"item": [
+				{
+					"name": "Put User Account Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00ecc4a3-589e-4559-914b-77c21b9432a0",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"Updated User was in the response\"] = responseBody.has(\"fname\") && responseBody.has(\"lname\") && responseBody.has(\"email\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"fname\":\"Testfname\",\"lname\":\"testlaname\",\"email\":\"lob@oregonstate.edu\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/accountinfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"accountinfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a55a680e-0727-426e-aba0-d037f093214e",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"Correct user info was in the response\"] = responseBody.has(\"Testfname\") && responseBody.has(\"testlaname\") && responseBody.has(\"lob@oregonstate.edu\");",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/accountinfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"accountinfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put to Nonexistent User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8c9a6d83-8042-4d46-a308-45633363b4e5",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"User does not exist\"] = responseBody.has(\"ERROR: User does not exist\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"fname\":\"Testfname\",\"lname\":\"testlaname\",\"email\":\"lob@oregonstate.edu\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/10213808035868067937/accountinfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"10213808035868067937",
+								"accountinfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put Nonexistent Account Attributes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2bbb1691-e303-4a38-b6b1-c4bd1175661c",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"User Attributes does not exist\"] = responseBody.has(\"ERROR: expected format -> {\\\"fname\\\": \\\"str\\\", \\\"lname\\\": \\\"str\\\", \\\"email\\\": \\\"str\\\"}\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"Badfname\":\"Testfname\",\"Badlname\":\"testlaname\",\"email\":\"lob@oregonstate.edu\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/accountinfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"accountinfo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Patch Account Info",
+			"description": "",
+			"item": [
+				{
+					"name": "Patch User Account Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c4cfe128-a3a5-4c70-9694-3529b22aba2b",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"User's 'fname' was updated\"] = responseBody.has(\"SUCCESS: User 'fname' was updated\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"fname\": \"Jacob\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/accountinfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"accountinfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8e2494e0-82bc-4f00-94e5-1ca7dc4573ac",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"Correct user info was in the response\"] = responseBody.has(\"Jacob\");",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/accountinfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"accountinfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Nonexistent User Info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0ebaf177-a88d-4b77-b872-30381ae12fe9",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"User does not exist\"] = responseBody.has(\"ERROR: User does not exist\") && responseCode.code === 400;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"fname\": \"Jacob\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/10213808035868067937/accountinfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"10213808035868067937",
+								"accountinfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch User Info Nonexistent Attribute ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bda4f3e6-aee2-4699-add0-bd2e2032a9ad",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"User attribute does not exist\"] = responseBody.has(\"ERROR: expected format -> {\\\"fname\\\": \\\"str\\\"} or {\\\"lname\\\": \\\"str\\\"} or {\\\"email\\\": \\\"str\\\"}\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"FirstName\": \"JAcob\"}"
+						},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/accountinfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"accountinfo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete Account Info",
+			"description": "",
+			"item": [
+				{
+					"name": "Delete User Account",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7f840572-2a50-47e9-97d5-f9142a3d26d6",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"User's account was deleted\"] = responseBody.has(\"SUCCESS: User's account was deleted\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/accountinfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"accountinfo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Nonexistent User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b8defb7b-16e9-4058-bfa0-acb7c84ae81b",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 400\"] = responseCode.code === 400;",
+									"",
+									"tests[\"User does not exist\"] = responseBody.has(\"ERROR: User does not exist\");"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://oauth-194607.appspot.com/users/102138080358680679370/accountinfo",
+							"protocol": "https",
+							"host": [
+								"oauth-194607",
+								"appspot",
+								"com"
+							],
+							"path": [
+								"users",
+								"102138080358680679370",
+								"accountinfo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "dadc9267-b623-449a-a78a-a1553fcdf0a2",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "595515d3-8490-4706-98f2-32caa9b22a52",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

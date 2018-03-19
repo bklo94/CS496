@@ -1,0 +1,33 @@
+<!--
+Template taken from
+https://realpython.com/blog/python/getting-started-with-bootstrap-3/
+ -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {padding-top: 50px;}
+    </style>
+    <title>Bootstrap Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <script src="js/jquery.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <body>
+  <div class="jumbotron">
+    <div class="container">
+      <h1>CS496 OAuth 2.0 Implementation</h1>
+      <p class="lead">Brandon Lo</p>
+      <p>This is the following functionality</p>
+      <ul>
+      <li>A page that has a link a user clicks to visit the Google OAuth 2.0 endpoint</li>
+      <li>A page that handles the user getting redirect back to your website from Google's endpoint and handles the exchanging of the access code for a token</li>
+      <li>A page (which could use the same handler as the page they were redirected to) which uses that token to access and display  the following information: The users first and last name and the URL to access their Google Plus account. It should also print out the value of the state variable that was used to secure the original redirect.</li>
+      </ul>
+      <a class="btn btn-primary btn-lg btn-block" href="{{ url }}">Login</a>
+    </div>
+  </div>
+  </body>
+</html>

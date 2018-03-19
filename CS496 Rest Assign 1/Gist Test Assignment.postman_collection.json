@@ -1,0 +1,967 @@
+{
+	"info": {
+		"name": "Gist Test Assignment",
+		"_postman_id": "e68e24dd-1f8b-5846-9de2-f6f674aa2f1e",
+		"description": "CS496 Assign 1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Check Public/Wolford Gists",
+			"item": [
+				{
+					"name": "Getting Public Gists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f0c902ec-f12d-4af7-9b0b-420bcf62e2dc",
+								"type": "text/javascript",
+								"exec": [
+									"var object = JSON.parse(responseBody);",
+									"",
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"tests[\"Getting public Gists returns 30 Gists\"] = object.length === 30;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.github.com/gists/public",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"gists",
+								"public"
+							]
+						},
+						"description": "Getting public Gists returns 30 Gists (you can get more via pagination, but you just need to get the first 30 and confirm that there are 30)"
+					},
+					"response": []
+				},
+				{
+					"name": "Get wolfordj Gists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c36517cf-9012-4ba1-9db8-ce1cd302dc23",
+								"type": "text/javascript",
+								"exec": [
+									"var object = JSON.parse(responseBody);",
+									"",
+									"tests[\"The user `wolfordj` has at least one public Gist\"] = object.length >= 1;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.github.com/users/wolfordj/gists",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"users",
+								"wolfordj",
+								"gists"
+							]
+						},
+						"description": "get gists from user wolfordj"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create Gists",
+			"item": [
+				{
+					"name": "Get bklo94 Gists",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "895cacb5-9049-44c5-a149-4a522c837074",
+								"type": "text/javascript",
+								"exec": [
+									"var gistsObject = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"numGist\",responseBody);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.github.com/users/bklo94/gists",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"users",
+								"bklo94",
+								"gists"
+							]
+						},
+						"description": "get gists from user bklo94 and sets the environment variable numGists to check if gist count added by 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Add Gist to bklo94",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"A Gist was created\"] = responseCode.code === 201;"
+								],
+								"id": "01146255-e9af-425e-82f4-2d8867736544",
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{OAuthToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"description\": \"Test Description\",\n  \"public\": true,\n  \"files\": {\n    \"postmanTest\": {\n      \"content\": \"Test Content\"\n    }\n  }\n}"
+						},
+						"url": {
+							"raw": "https://api.github.com/gists?access_token={{Access Token}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"gists"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{Access Token}}",
+									"equals": true
+								}
+							]
+						},
+						"description": "Create Gist"
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Gist Count",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "721eecc8-9b1e-4c16-af10-5516922c1b74",
+								"type": "text/javascript",
+								"exec": [
+									"var object = JSON.parse(responseBody);",
+									"",
+									"var checkCount = JSON.parse(postman.getEnvironmentVariable(\"numGist\"));",
+									"",
+									"tests[\"The Gist count for user 'bklo94' has increased by 1\"] = object.length === checkCount.length + 1;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.github.com/users/bklo94/gists",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"users",
+								"bklo94",
+								"gists"
+							]
+						},
+						"description": "Confirm that when you create a Gist the number of Gists associated to your account increases by 1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Check Content",
+			"item": [
+				{
+					"name": "Create Content Gist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "96a87153-c552-49a9-b121-5ac12d4717cf",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 201\"] = responseCode.code === 201;",
+									"",
+									"var response = JSON.parse(responseBody);",
+									"",
+									"postman.clearGlobalVariable(\"matchID\", response.id);",
+									"postman.setGlobalVariable(\"matchID\", response.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"description\": \"My second ever Gist!\", \n\t\"public\": true, \n\t\"files\": {\n\t\t\"examplefile\": {\n\t\t\"content\": \"Test Content\" \n\t\t}\n\t}\n}\n"
+						},
+						"url": {
+							"raw": "https://api.github.com/gists?access_token={{Access Token}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"gists"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{Access Token}}",
+									"equals": true
+								}
+							]
+						},
+						"description": "2nd Test Gist"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Gist Content",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "50cb8dd1-b879-4008-b015-49c8126d5ed5",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"var response = JSON.parse(responseBody); ",
+									"",
+									"tests[\"Check gist text\"] = response.files.examplefile.content === \"Test Content\";"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.github.com/gists/{{matchID}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"gists",
+								"{{matchID}}"
+							]
+						},
+						"description": "Confirm that the contents of the Gist you created match the contents you sent"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Edit Gist",
+			"item": [
+				{
+					"name": "Check Gist Edit/Update",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c6a96e89-11b7-43a6-ad9b-ffe83b38ac56",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"description\": \"My second ever Gist!\", \n\t\"public\": true, \n\t\"files\": {\n\t\t\"examplefile\": {\n\t\t\"content\": \"This is new!\" \n\t\t}\n\t}\n}\n"
+						},
+						"url": {
+							"raw": "https://api.github.com/gists/{{matchID}}?access_token={{Access Token}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"gists",
+								"{{matchID}}"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{Access Token}}",
+									"equals": true
+								}
+							]
+						},
+						"description": "Checks if gist updated/edited"
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Content",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "84e2b214-e80c-45b8-8861-f8b79badd931",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"var response = JSON.parse(responseBody);",
+									"",
+									"tests[\"Confirm Edit updated\"] = \"This is new!\" === response[\"files\"][\"examplefile\"][\"content\"];"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.github.com/gists/{{matchID}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"gists",
+								"{{matchID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Star Gist",
+			"item": [
+				{
+					"name": "Confirm Gist Star",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cf1e5914-b4fb-4179-ad36-607e49f6ae4f",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Add a star to Gist\"] = responseCode.code === 204;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization }}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.github.com/gists/{{matchID}}/star?access_token={{Access Token}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"gists",
+								"{{matchID}}",
+								"star"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{Access Token}}",
+									"equals": true
+								}
+							]
+						},
+						"description": "Confirm that you can add a star to a Gist"
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Gist List Star",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "f318ab94-2ee7-4163-96e7-8decbbae1549",
+								"type": "text/javascript",
+								"exec": [
+									"var new_gist_star = postman.getGlobalVariable(\"matchID\");",
+									"",
+									"tests[\"Add Star has added\"] = responseBody.has(new_gist_star);",
+									"",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization }}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.github.com/gists/starred?access_token={{Access Token}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"gists",
+								"starred"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{Access Token}}",
+									"equals": true
+								}
+							]
+						},
+						"description": "Confirm that your list of Starred gists is correct"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Check List Star Gist",
+			"item": [
+				{
+					"name": "Check List Starred Gist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4d156d14-a89e-4182-a90e-930efa96da66",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"var response = JSON.parse(responseBody);",
+									"",
+									"tests[\"There is one Gist Star\"] = response.length == 1;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.github.com/gists/starred?access_token={{Access Token}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"gists",
+								"starred"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{Access Token}}",
+									"equals": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Remove Starred Gist",
+			"item": [
+				{
+					"name": "Put temp star",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "9f5c82c2-330e-4f53-8d1a-07a1255fcee2",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 204\"] = responseCode.code === 204;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Length",
+								"value": "0"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.github.com/gists/{{matchID}}/star?access_token={{Access Token}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"gists",
+								"{{matchID}}",
+								"star"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{Access Token}}",
+									"equals": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List Stars",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b02b29df-6fbf-49f6-a923-f6f8812aaf2e",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"var response = JSON.parse(responseBody);",
+									"",
+									"tests[\"Gist has been starred\"] = response.length === 1;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.github.com/gists/starred?access_token={{Access Token}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"gists",
+								"starred"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{Access Token}}",
+									"equals": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Remove Gist Star",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Removed a star from  Gist\"] = responseCode.code === 204;"
+								],
+								"id": "b85d7e02-7fce-4510-b8ee-c1a761ed3a5d",
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization }}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.github.com/gists/{{matchID}}/star?access_token={{Access Token}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"gists",
+								"{{matchID}}",
+								"star"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{Access Token}}",
+									"equals": true
+								}
+							]
+						},
+						"description": "Confirm you can remove a star from a Gist"
+					},
+					"response": []
+				},
+				{
+					"name": "Check Removed Gist Star",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a34240f1-e4e6-4716-a478-59583e5d5295",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 200\"] = responseCode.code === 200;",
+									"",
+									"var response = JSON.parse(responseBody);",
+									"",
+									"tests[\"There are no more starred gists\"] = response.length === 0;",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{Authorization }}"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "https://api.github.com/gists/starred?access_token={{Access Token}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"gists",
+								"starred"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{Access Token}}",
+									"equals": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete Gist",
+			"item": [
+				{
+					"name": "Create Temp Gist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4ea5a45a-8486-483a-b18e-7df8f6421805",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status 201\"] = responseCode.code === 201;",
+									"",
+									"var response = JSON.parse(responseBody);",
+									"",
+									"postman.clearGlobalVariable(\"deleteID\", response.id);",
+									"postman.setGlobalVariable(\"deleteID\", response.id);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"description\": \"Temp Gist\", \n\t\"public\": true, \n\t\"files\": {\n\t\t\"tempfile\": {\n\t\t\"content\": \"{{This is new!}}\" \n\t\t}\n\t}\n}\n"
+						},
+						"url": {
+							"raw": "https://api.github.com/gists?access_token={{Access Token}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"gists"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{Access Token}}",
+									"equals": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get bklo94 Gists copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2eed7344-fb30-412d-b9b7-2d8a9aaed214",
+								"type": "text/javascript",
+								"exec": [
+									"var response = JSON.parse(responseBody);",
+									"",
+									"postman.setEnvironmentVariable(\"gistCount\", response.length);"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.github.com/users/bklo94/gists",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"users",
+								"bklo94",
+								"gists"
+							]
+						},
+						"description": "get gists from user bklo94 and sets the environment variable numGists to check if gist count added by 1"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Gist",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "43714e7f-a057-4f0c-be51-62a3d71dd19c",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Gist has been deleted\"] = responseCode.code === 204;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://api.github.com/gists/{{deleteID}}?access_token={{Access Token}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"gists",
+								"{{deleteID}}"
+							],
+							"query": [
+								{
+									"key": "access_token",
+									"value": "{{Access Token}}",
+									"equals": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Confirm Gist Count copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bd868fe6-583b-4420-b02f-605a1311cc3a",
+								"type": "text/javascript",
+								"exec": [
+									"var object = JSON.parse(responseBody);",
+									"",
+									"tests[\"The Gist count for user 'bklo94' has decreased by 1\"] = (postman.getEnvironmentVariable(\"gistCount\") - 1) === object.length;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "https://api.github.com/users/bklo94/gists",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"users",
+								"bklo94",
+								"gists"
+							]
+						},
+						"description": "Confirm that when you create a Gist the number of Gists associated to your account increases by 1"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"exec": [
+					""
+				],
+				"id": "dc9a007c-0b63-48e8-b159-b904d98ea817",
+				"type": "text/javascript"
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"exec": [
+					""
+				],
+				"id": "e4e561f2-a910-48c5-9ed5-d88ce011ca19",
+				"type": "text/javascript"
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "37c86f20-a18a-4988-bfd4-a8c53309074f",
+			"key": "OAuthToken",
+			"value": "Bearer fdb71510f0bdad31d6288e320b0f5eeefffa6835",
+			"type": "text"
+		},
+		{
+			"id": "dea69342-d304-447d-9af8-8462f9731a46",
+			"key": "numGists",
+			"value": "",
+			"type": "text"
+		}
+	]
+}
